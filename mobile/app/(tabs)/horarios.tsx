@@ -65,7 +65,7 @@ export default function Horarios() {
           key={h}
           onPress={() => agendar(h)}
           style={{
-            backgroundColor: "#f2efef",
+            backgroundColor: "#eee6e6",
             padding: 15,
             borderRadius: 10,
             marginBottom: 10
