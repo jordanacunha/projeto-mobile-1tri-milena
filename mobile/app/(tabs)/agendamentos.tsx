@@ -40,7 +40,7 @@ export default function Agendamentos() {
             key={item.id}
             style={{
               marginBottom: 15,
-              backgroundColor: "#ede6e6",
+              backgroundColor: "#e7e7e7",
               padding: 15,
               borderRadius: 10
             }}
