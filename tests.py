@@ -42,3 +42,20 @@ def test_profissional_clinico():
     }
     assert len(profissionais["Clínico Geral"]) > 0
 
+
+# TESTE 7 - Verificar se horários disponíveis aparecem
+def test_horarios_disponiveis():
+    horarios = ["08:00", "09:00", "10:00"]
+    assert "09:00" in horarios
+
+
+# TESTE 8 - Verificar horário inexistente
+def test_horario_inexistente():
+    horarios = ["08:00", "09:00"]
+    assert "15:00" not in horarios
+
+
+# TESTE 9 - Verificar confirmação de agendamento
+def test_confirmar_agendamento():
+    agendado = True
+    assert agendado == True

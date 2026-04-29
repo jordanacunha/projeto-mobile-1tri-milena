@@ -17,6 +17,7 @@ export default function Profissionais() {
           .trim()
           .toLowerCase()
 
+          
         const filtrados = data.filter((doctor: any) =>
           String(doctor.especialidade)
             .trim()
