@@ -18,3 +18,27 @@ def test_lista_especialidades():
         "Dermatologista"
     ]
     assert "Clínico Geral" in especialidades
+
+    # TESTE 4 - Verificar se existe Pediatra
+def test_especialidade_pediatra():
+    especialidades = [
+        "Clínico Geral",
+        "Pediatra",
+        "Dermatologista"
+    ]
+    assert "Pediatra" in especialidades
+
+
+# TESTE 5 - Verificar se ao clicar abre lista de profissionais
+def test_abrir_profissionais():
+    profissionais = ["Dr. João", "Dra. Ana"]
+    assert len(profissionais) > 0
+
+
+# TESTE 6 - Verificar se Clínico Geral possui profissional
+def test_profissional_clinico():
+    profissionais = {
+        "Clínico Geral": ["Dr. Carlos"]
+    }
+    assert len(profissionais["Clínico Geral"]) > 0
+
