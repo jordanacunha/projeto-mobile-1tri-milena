@@ -17,16 +17,12 @@ export default function Profissionais() {
           .trim()
           .toLowerCase()
 
-          
         const filtrados = data.filter((doctor: any) =>
           String(doctor.especialidade)
             .trim()
             .toLowerCase()
             .includes(espRecebida)
         )
-
-        console.log("Especialidade recebida:", espRecebida)
-        console.log("Filtrados:", filtrados)
 
         setDoctors(filtrados)
       })
@@ -55,7 +51,7 @@ export default function Profissionais() {
             }}
             onPress={() =>
               router.push({
-                pathname: "/horarios",
+                pathname: "/dias",
                 params: { id: doctor.id }
               })
             }
@@ -63,6 +59,7 @@ export default function Profissionais() {
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>
               {doctor.nome}
             </Text>
+
             <Text>{doctor.especialidade}</Text>
           </TouchableOpacity>
         ))

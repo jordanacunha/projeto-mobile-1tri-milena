@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+
 const doctors = require("./data/doctors")
 const appointments = require("./data/appointments")
 
@@ -16,6 +17,7 @@ app.get("/doctors/:id", (req, res) => {
   const doctor = doctors.find(
     d => d.id === Number(req.params.id)
   )
+
   res.json(doctor)
 })
 
@@ -24,12 +26,40 @@ app.get("/appointments", (req, res) => {
 })
 
 app.post("/appointments", (req, res) => {
+  const {
+    doctorId,
+    doctorNome,
+    especialidade,
+    dia,
+    horario,
+    paciente
+  } = req.body
+
+  const existe = appointments.find(
+    appointment =>
+      appointment.doctorId == doctorId &&
+      appointment.dia == dia &&
+      appointment.horario == horario
+  )
+
+  if (existe) {
+    return res.status(400).json({
+      erro: "Horário já agendado para esse dia"
+    })
+  }
+
   const novo = {
     id: appointments.length + 1,
-    ...req.body
+    doctorId,
+    doctorNome,
+    especialidade,
+    dia,
+    horario,
+    paciente
   }
 
   appointments.push(novo)
+
   res.status(201).json(novo)
 })
 

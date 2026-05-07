@@ -53,7 +53,10 @@ export default function Agendamentos() {
               {item.especialidade}
             </Text>
 
+            <Text>🗓️ Dia: {item.dia}</Text>
+
             <Text>🕒 Horário: {item.horario}</Text>
+
             <Text>👤 Paciente: {item.paciente}</Text>
           </View>
         ))
