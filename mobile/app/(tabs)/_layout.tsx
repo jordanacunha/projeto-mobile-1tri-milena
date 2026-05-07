@@ -30,7 +30,7 @@ export default function TabLayout() {
     <Tabs.Screen
         name="dias"
         options={{
-          title: 'Dias Disponiveis',
+          title: 'Dias Disponíveis',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="calendar" size={size} color={color} />
           ),
@@ -40,7 +40,7 @@ export default function TabLayout() {
        <Tabs.Screen
         name="horarios"
         options={{
-          title: 'Horarios',
+          title: 'Horários',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="dashboard" size={24} color="black" />
           ),
