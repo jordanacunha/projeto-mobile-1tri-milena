@@ -24,9 +24,6 @@ export default function Profissionais() {
             .includes(espRecebida)
         )
 
-        console.log("Especialidade recebida:", espRecebida)
-        console.log("Filtrados:", filtrados)
-
         setDoctors(filtrados)
       })
       .catch((err) => console.log("Erro:", err))
@@ -54,7 +51,7 @@ export default function Profissionais() {
             }}
             onPress={() =>
               router.push({
-                pathname: "/horarios",
+                pathname: "/dias",
                 params: { id: doctor.id }
               })
             }
@@ -62,6 +59,7 @@ export default function Profissionais() {
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>
               {doctor.nome}
             </Text>
+
             <Text>{doctor.especialidade}</Text>
           </TouchableOpacity>
         ))

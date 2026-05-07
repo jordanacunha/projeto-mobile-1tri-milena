@@ -5,8 +5,10 @@ import { useEffect, useState } from "react"
 const API = "http://localhost:3000"
 
 export default function Horarios() {
-  const { id } = useLocalSearchParams()
+  const { id, dia } = useLocalSearchParams()
+
   const [doctor, setDoctor] = useState<any>(null)
+
   const router = useRouter()
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function Horarios() {
 
   const agendar = async (horario: string) => {
     try {
-      await fetch(`${API}/appointments`, {
+      const response = await fetch(`${API}/appointments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -29,12 +31,24 @@ export default function Horarios() {
           doctorId: id,
           doctorNome: doctor.nome,
           especialidade: doctor.especialidade,
+          dia,
           horario,
           paciente: "Paciente Teste"
         })
       })
 
-      Alert.alert("Sucesso", `Consulta agendada às ${horario}`)
+      const data = await response.json()
+
+      if (!response.ok) {
+        Alert.alert("Erro", data.erro)
+        return
+      }
+
+      Alert.alert(
+        "Sucesso",
+        `Consulta agendada no dia ${dia} às ${horario}`
+      )
+
       router.push("/agendamentos")
     } catch (error) {
       console.log(error)
@@ -44,7 +58,13 @@ export default function Horarios() {
 
   if (!doctor) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
         <Text>Carregando...</Text>
       </View>
     )
@@ -56,8 +76,12 @@ export default function Horarios() {
         {doctor.nome}
       </Text>
 
-      <Text style={{ marginBottom: 20, color: "gray" }}>
+      <Text style={{ marginBottom: 5, color: "gray" }}>
         {doctor.especialidade}
+      </Text>
+
+      <Text style={{ marginBottom: 20 }}>
+        Dia selecionado: {dia}
       </Text>
 
       {doctor.horarios.map((h: string) => (

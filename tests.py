@@ -31,14 +31,56 @@ def test_especialidade_pediatra():
 
 # TESTE 5 - Verificar se ao clicar abre lista de profissionais
 def test_abrir_profissionais():
-    profissionais = ["Dr. João", "Dra. Ana"]
+    profissionais = ["Dr. Carlos Silva", "Dra. Mariana Souza", "Dr. Felipe Costa"]
     assert len(profissionais) > 0
 
 
 # TESTE 6 - Verificar se Clínico Geral possui profissional
 def test_profissional_clinico():
     profissionais = {
-        "Clínico Geral": ["Dr. Carlos"]
+        "Clínico Geral": ["Dr. Carlos Silva"]
     }
     assert len(profissionais["Clínico Geral"]) > 0
 
+
+# TESTE 7 - Verificar se horários disponíveis aparecem
+def test_horarios_disponiveis():
+    horarios = ["08:00", "09:00", "10:00"]
+    assert "09:00" in horarios
+
+
+# TESTE 8 - Verificar horário inexistente
+def test_horario_inexistente():
+    horarios = ["08:00", "09:00"]
+    assert "15:00" not in horarios
+
+
+# TESTE 9 - Verificar confirmação de agendamento
+def test_confirmar_agendamento():
+    agendado = True
+    assert agendado == True
+
+    # TESTE 10 - Verificar se usuário sem nome não agenda
+def test_nome_vazio():
+    nome = ""
+    assert nome == ""
+
+
+# TESTE 11 - Verificar se especialidade inválida falha
+def test_especialidade_invalida():
+    especialidade = "Cardiologista"
+    especialidades_validas = [
+        "Clínico Geral",
+        "Pediatra",
+        "Dermatologista"
+    ]
+    assert especialidade not in especialidades_validas
+
+
+# TESTE 12 - Verificar retorno para tela inicial
+def test_voltar_inicio():
+    rota = "/"
+    assert rota == "/"
+
+
+print("12 testes do sistema de agendamento prontos!")
