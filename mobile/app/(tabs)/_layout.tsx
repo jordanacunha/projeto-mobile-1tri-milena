@@ -2,6 +2,7 @@ import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import Entypo from '@expo/vector-icons/Entypo';
 
 export default function TabLayout() {
   return (
@@ -20,6 +21,16 @@ export default function TabLayout() {
         name="agendamentos"
         options={{
           title: 'Agendamentos',
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="clipboard" size={24} color="black" />
+          ),
+        }}
+      />
+
+    <Tabs.Screen
+        name="dias"
+        options={{
+          title: 'Dias Disponiveis',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="calendar" size={size} color={color} />
           ),
