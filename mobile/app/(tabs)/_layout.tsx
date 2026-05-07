@@ -1,5 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export default function TabLayout() {
   return (
@@ -23,6 +25,38 @@ export default function TabLayout() {
           ),
         }}
       />
+
+       <Tabs.Screen
+        name="horarios"
+        options={{
+          title: 'Horarios',
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="dashboard" size={24} color="black" />
+          ),
+        }}
+      />
+
+
+      <Tabs.Screen
+        name="especialidades"
+        options={{
+          title: 'Consultas',
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="solution" size={24} color="black" />
+          ),
+        }}
+      />
+      
+      <Tabs.Screen
+        name="profissionais"
+        options={{
+          title: 'Profissionais',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome6 name="user-doctor" size={24} color="black" />
+          ),
+        }}
+      />
+
     </Tabs>
   );
 }
